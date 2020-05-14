@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">MIMProjectII</string>
+    <string name="title_activity_firebase">FirebaseActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="home_second">Home Second</string>
+
+    <string name="Login">Zaloguj się</string>
+    <string name="password">hasło</string>
+    <string name="email">email</string>
+
+    <string name="Register">Rejestracja</string>
+    <string name="Singup">Zarejestruj się</string>
+
+    <string name="menu_games">Gry</string>
+    <string name="menu_books">Książki</string>
+    <string name="menu_movies">Filmy</string>
+    <string name="menu_series">Seriale</string>
+</resources>
