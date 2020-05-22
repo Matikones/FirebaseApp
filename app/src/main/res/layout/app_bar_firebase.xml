@@ -22,5 +22,4 @@
 
     <include layout="@layout/content_firebase" />
 
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

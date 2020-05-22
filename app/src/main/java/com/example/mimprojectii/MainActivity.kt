@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
+import com.google.firebase.database.*
 import com.example.mimprojectii.Database.FirebaseActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
+
     }
 
     private fun Login() {
@@ -58,6 +60,8 @@ class MainActivity : AppCompatActivity() {
                     updateUI(user)
                 } else {
                     updateUI(null)
+                    Toast.makeText(this, "Błędny email lub hasło", Toast.LENGTH_LONG).show()
+                    password_login.setText("")
                 }
             }
     }
@@ -75,4 +79,6 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
     }
+
+
 }

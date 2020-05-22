@@ -22,4 +22,6 @@
         app:headerLayout="@layout/nav_header_firebase"
         app:menu="@menu/activity_firebase_drawer" />
 
+
+
 </androidx.drawerlayout.widget.DrawerLayout>
