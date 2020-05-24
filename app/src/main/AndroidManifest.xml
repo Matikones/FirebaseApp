@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".Series.AddSeries"></activity>
+        <activity android:name=".Movies.AddMovie"></activity>
+        <activity android:name=".Series.AddSeries" />
         <activity android:name=".Games.AddGame" />
         <activity android:name=".Books.AddBook" />
         <activity android:name=".RegisterActivity" />

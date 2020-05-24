@@ -54,6 +54,7 @@ class SeriesFragment : Fragment() {
                 for(i in dataSnapshot.children){
                     val newRow = i.getValue(DatabaseRowSeries::class.java)
                     listOfItems.add(newRow!!)
+
                 }
                 setupAdapter(listOfItems)
             }

@@ -4,10 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="300dp">
+    android:layout_height="match_parent">
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/titlebook"
+        android:id="@+id/titlemovie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -20,39 +20,23 @@
 
     </com.google.android.material.textview.MaterialTextView>
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/authorbook"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
-        android:text="Autor"
-        android:textSize="40dp"
-        app:fontFamily="@font/aclonica_regular"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textColor="@android:color/black"
-        app:layout_constraintTop_toBottomOf="@+id/titlebook">
-
-    </com.google.android.material.textview.MaterialTextView>
-
     <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/checkbook"
+        android:id="@+id/checkmovie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
-        android:editable="false"
         android:fontFamily="@font/aclonica_regular"
         android:text="Stan"
         android:textColor="@android:color/black"
         android:textSize="40dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/authorbook">
+        app:layout_constraintTop_toBottomOf="@+id/titlemovie">
 
     </com.google.android.material.checkbox.MaterialCheckBox>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/showbookinfo"
+        android:id="@+id/showmovieinfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -60,7 +44,7 @@
         android:text="Wyświetl"
         android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/authorbook">
+        app:layout_constraintTop_toBottomOf="@+id/titlemovie">
 
     </com.google.android.material.button.MaterialButton>
 
