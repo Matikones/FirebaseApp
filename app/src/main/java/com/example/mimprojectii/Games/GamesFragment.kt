@@ -61,6 +61,6 @@ class GamesFragment : Fragment() {
     }
 
     private fun setupAdapter(arrayData: ArrayList<DatabaseRowGame>){
-        recyclerViewGames.adapter = AdapterGames(arrayData)
+        recyclerViewGames.adapter = AdapterGames(arrayData, context)
     }
 }

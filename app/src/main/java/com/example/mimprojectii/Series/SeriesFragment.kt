@@ -62,6 +62,6 @@ class SeriesFragment : Fragment() {
     }
 
     private fun setupAdapter(arrayData: ArrayList<DatabaseRowSeries>){
-        recyclerViewSeries.adapter = AdapterSeries(arrayData)
+        recyclerViewSeries.adapter = AdapterSeries(arrayData, context)
     }
 }

@@ -52,12 +52,13 @@ class AddMovie : AppCompatActivity() {
             if(canAdd) {
                 addMovie()
                 movie = ""
+                canAdd = false
+                dodane = true
             }
         }
 
         cancel_movie.setOnClickListener {
-            val intent = Intent(applicationContext, FirebaseActivity::class.java)
-            startActivity(intent)
+            onBackPressed()
         }
     }
    // https://www.omdbapi.com/?t=Shrek&apikey=2ccc7b8a
@@ -93,6 +94,12 @@ class AddMovie : AppCompatActivity() {
     }
 
     fun addMovie(){
+
+        if(movie_name.text.toString().isEmpty()){
+            movie_name.error = "Wprowadz tytuł"
+            return
+        }
+
         val movietitle = movie_name.text.toString()
         val moviestatus = movie_status.isChecked
         val firebaseInput = DatabaseRowMovie(movietitle, moviestatus)
@@ -104,25 +111,25 @@ class AddMovie : AppCompatActivity() {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if(dataSnapshot.hasChild("${movietitle}")){
-                    if(!dodane) {
+                    if(dodane) {
                         Toast.makeText(
                             applicationContext,
                             "Film ${movietitle} juz istnieje w bazie!",
                             Toast.LENGTH_LONG
                         ).show()
+                        dodane = false
                     }
                 }
                 else{
-                    dodane = true
-                    myRef.child("${movietitle}").setValue(firebaseInput)
                     if(dodane) {
                         Toast.makeText(
                             applicationContext,
                             "Dodano film ${movietitle}",
                             Toast.LENGTH_LONG
                         ).show()
-                        val intent = Intent(applicationContext, FirebaseActivity::class.java)
-                        startActivity(intent)
+                        myRef.child("${movietitle}").setValue(firebaseInput)
+                        onBackPressed()
+                        dodane = false
                     }
                 }
             }

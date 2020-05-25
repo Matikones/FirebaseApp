@@ -68,6 +68,6 @@ class BooksFragment : Fragment() {
     }
 
     private fun setupAdapter(arrayData: ArrayList<DatabaseRowBook>){
-        recyclerView.adapter = Adapter(arrayData)
+        recyclerView.adapter = Adapter(arrayData, context)
     }
 }

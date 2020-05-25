@@ -34,17 +34,22 @@ class AddGame : AppCompatActivity() {
         myRef = firebase.getReference("${user}").child("Games")
 
         addgame_button.setOnClickListener {
+            dodane = true
             addGame()
         }
 
         cancelgame_botton.setOnClickListener {
-            val intent = Intent(applicationContext, FirebaseActivity::class.java)
-            startActivity(intent)
-            supportFragmentManager.beginTransaction().replace(R.id.container, GamesFragment())
+            onBackPressed()
         }
     }
 
     fun addGame(){
+
+        if(add_title.text.toString().isEmpty()){
+            add_title.error = "Wprowadz tytuł"
+            return
+        }
+
         val gametitle = add_title.text.toString()
         val gamestatus = add_gamestatus.isChecked
         val firebaseInput = DatabaseRowGame(gametitle, gamestatus)
@@ -56,26 +61,26 @@ class AddGame : AppCompatActivity() {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if(dataSnapshot.hasChild("${gametitle}")){
-                    if(!dodane) {
+                    if(dodane == true) {
                         Toast.makeText(
                             applicationContext,
                             "Gra ${gametitle} juz istnieje w bazie!",
                             Toast.LENGTH_LONG
                         ).show()
+                        dodane = false
                     }
                 }
                 else{
-                    dodane = true
-                    myRef.child("${gametitle}").setValue(firebaseInput)
-                    if(dodane) {
+                    if(dodane == true) {
                         Toast.makeText(
                             applicationContext,
                             "Dodano gre ${gametitle}",
                             Toast.LENGTH_LONG
                         ).show()
+                        myRef.child("${gametitle}").setValue(firebaseInput)
+                        onBackPressed()
+                        dodane = false
                     }
-                    val intent = Intent(applicationContext, FirebaseActivity::class.java)
-                    startActivity(intent)
                 }
             }
         })

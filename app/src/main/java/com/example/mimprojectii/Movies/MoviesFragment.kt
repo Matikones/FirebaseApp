@@ -65,7 +65,7 @@ class MoviesFragment : Fragment() {
     }
 
     private fun setupAdapter(arrayData: ArrayList<DatabaseRowMovie>){
-        recyclerViewMovies.adapter = AdapterMovie(arrayData)
+        recyclerViewMovies.adapter = AdapterMovie(arrayData, context)
     }
 }
 

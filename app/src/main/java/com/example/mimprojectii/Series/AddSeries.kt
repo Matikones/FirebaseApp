@@ -33,47 +33,57 @@ class AddSeries : AppCompatActivity() {
         myRef = firebase.getReference("${user}").child("Series")
 
         addseries_button.setOnClickListener {
+            dodane = true
             addSeries()
         }
 
         cancelseries_botton.setOnClickListener {
-            val intent = Intent(applicationContext, FirebaseActivity::class.java)
-            startActivity(intent)
+            onBackPressed()
         }
     }
 
     fun addSeries() {
+
+        if(add_title.text.toString().isEmpty()){
+            add_title.error = "Wprowadz tytuł"
+            return
+        }
+
+        if(add_sezon.text.toString().isEmpty()){
+            add_sezon.error = "Wprowadz sezony"
+            return
+        }
+
         val tytul = add_title.text.toString()
         val sezony = add_sezon.text.toString()
         val ogladane = add_status.isChecked
         val firebaseInput = DatabaseRowSeries(tytul, sezony, ogladane)
-        myRef.addValueEventListener(object: ValueEventListener {
+        myRef.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(databaseError: DatabaseError) {
 
             }
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                if(dataSnapshot.hasChild("${tytul}")){
-                    if(!dodane) {
+                if (dataSnapshot.hasChild("${tytul}")) {
+                    if (dodane == true) {
                         Toast.makeText(
                             applicationContext,
                             "Serial ${tytul} juz istnieje w bazie!",
                             Toast.LENGTH_LONG
                         ).show()
+                        dodane = false
                     }
-                }
-                else{
-                    dodane = true
-                    myRef.child("${tytul}").setValue(firebaseInput)
-                    if(dodane) {
+                } else {
+                    if (dodane) {
                         Toast.makeText(
                             applicationContext,
                             "Dodano serial ${tytul}",
                             Toast.LENGTH_LONG
                         ).show()
+                        myRef.child("${tytul}").setValue(firebaseInput)
+                        onBackPressed()
+                        dodane = false
                     }
-                    val intent = Intent(applicationContext, FirebaseActivity::class.java)
-                    startActivity(intent)
                 }
             }
         })
